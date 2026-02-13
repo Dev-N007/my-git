@@ -10,6 +10,8 @@ It supports:
 - `init` — initialize repository  
 - `add` — stage files  
 - `commit` — create commits  
+- `status` — show working directory state  
+- `revert` — restore files to last commit  
 
 ---
 
@@ -55,7 +57,6 @@ This matches Git’s internal storage behavior.
 ## Repository Structure
 
 After running:
-
 ./ccgit init
 
 Structure:
@@ -73,7 +74,6 @@ Structure:
 ---
 
 ## How Add Works
-
 ./ccgit add file.txt
 
 Steps:
@@ -87,7 +87,6 @@ Steps:
 ---
 
 ## How Commit Works
-
 ./ccgit commit "message"
 
 Steps:
@@ -103,6 +102,46 @@ Commit format:
 tree <tree_sha>
 author Name <email> timestamp
 committer Name <email> timestamp
+
+---
+
+## How Status Works
+./ccgit status
+
+Shows the current state of the working directory.
+
+Steps:
+
+1. Reads the index (`.git/index`).
+2. For each staged file:
+   - If the file is missing → marked as **deleted**.
+   - If its current hash differs from stored hash → marked as **modified**.
+3. Scans the current directory:
+   - Files not present in the index → marked as **untracked**.
+
+This helps identify changes before committing.
+
+
+## How Revert Works
+./ccgit revert
+
+Restores working directory files to the state of the last commit.
+
+Steps:
+
+1. Read latest commit SHA  
+2. Read associated tree object  
+3. Restore blob contents  
+4. Overwrite working directory files  
+
+This behaves similarly to:
+
+git restore .
+or
+git reset --hard HEAD
+
+It does not delete commit history.  
+It restores files to match the last committed snapshot.
 
 ---
 
@@ -126,6 +165,8 @@ gcc src/*.c -Iinclude -lssl -lcrypto -lz -o ccgit
 echo "hello" > file.txt
 ./ccgit add file.txt
 ./ccgit commit "first commit"
+./ccgit status
+./ccgit revert
 
 ---
 
@@ -136,6 +177,7 @@ echo "hello" > file.txt
 - Cryptographic hashing  
 - Data compression  
 - Git’s internal storage model  
+- Basic repository state management 
 
 ---
 

@@ -13,6 +13,10 @@ int main(int argc, char *argv[]){
         add_file(argv[2]);
     else if (strcmp(argv[1], "commit") == 0 && argc == 3) 
         commit_changes(argv[2]);
+    else if (strcmp(argv[1], "status") == 0) 
+        status();
+    else if (strcmp(argv[1], "revert") == 0) 
+        revert();
     else 
         printf("Unknown command\n");
     

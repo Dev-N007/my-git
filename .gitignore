@@ -2,3 +2,5 @@
 .vscode
 README_DETAILED.md
 *.txt
+test/
+.gitignore
