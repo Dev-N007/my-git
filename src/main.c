@@ -17,6 +17,8 @@ int main(int argc, char *argv[]){
         status();
     else if (strcmp(argv[1], "revert") == 0) 
         revert();
+    else if (strcmp(argv[1], "log") == 0)
+        log_history();
     else 
         printf("Unknown command\n");
     

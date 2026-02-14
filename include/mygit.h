@@ -1,5 +1,5 @@
-#ifndef CCGIT_H
-#define CCGIT_H
+#ifndef MYGIT_H
+#define MYGIT_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,6 +20,7 @@ void add_file(const char *filename);
 void commit_changes(const char *message);
 void status();
 void revert();
+void log_history();
 
 void hash_object(const char *type, const unsigned char *data, size_t len, char *sha1_hex);
 void write_object(const char *sha1_hex, const unsigned char *data, size_t len);
