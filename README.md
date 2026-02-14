@@ -102,8 +102,10 @@ Steps:
 Commit format:
 
 tree <tree_sha>
+parent <parent_sha>
 author Name <email> timestamp
 committer Name <email> timestamp
+commit message
 
 ---
 
@@ -190,7 +192,7 @@ Requires:
 
 Compile with:
 
-gcc src/*.c -Iinclude -lssl -lcrypto -lz -o ccgit
+gcc src/*.c -Iinclude -lssl -lcrypto -lz -o mygit
 
 ---
 
@@ -218,5 +220,5 @@ echo "hello" > file.txt
 
 ## Conclusion
 
-mygit is a simplified educational implementation of Git’s core storage engine.  
+MyGit is a simplified educational implementation of Git’s core storage engine.  
 It demonstrates how Git stores objects, creates commits, and manages repository history at a low level.
