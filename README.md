@@ -1,8 +1,8 @@
-# ccgit — Minimal Git Implementation in C
+# MyGit — Minimal Git Implementation in C
 
 ## Overview
 
-ccgit is a simplified reimplementation of Git’s core internals written in C.  
+MyGit is a simplified reimplementation of Git’s core internals written in C.  
 The purpose of this project is to understand how Git works internally by building a basic content-addressable version control system from scratch.
 
 It supports:
@@ -12,6 +12,8 @@ It supports:
 - `commit` — create commits  
 - `status` — show working directory state  
 - `revert` — restore files to last commit  
+- `log` — displays the commit history 
+- `rm` — removes files from staging area  
 
 ---
 
@@ -57,7 +59,7 @@ This matches Git’s internal storage behavior.
 ## Repository Structure
 
 After running:
-./ccgit init
+./mygit init
 
 Structure:
 .git/
@@ -74,7 +76,7 @@ Structure:
 ---
 
 ## How Add Works
-./ccgit add file.txt
+./mygit add file.txt
 
 Steps:
 
@@ -87,7 +89,7 @@ Steps:
 ---
 
 ## How Commit Works
-./ccgit commit "message"
+./mygit commit "message"
 
 Steps:
 
@@ -106,7 +108,7 @@ committer Name <email> timestamp
 ---
 
 ## How Status Works
-./ccgit status
+./mygit status
 
 Shows the current state of the working directory.
 
@@ -123,7 +125,7 @@ This helps identify changes before committing.
 
 
 ## How Revert Works
-./ccgit revert
+./mygit revert
 
 Restores working directory files to the state of the last commit.
 
@@ -145,6 +147,39 @@ It restores files to match the last committed snapshot.
 
 ---
 
+## How log Works
+./mygit log
+
+Displays the commit history starting from the latest commit (HEAD).
+
+Steps:
+
+1. Reads the latest commit SHA from `.git/refs/heads/master`.
+2. Loads and decompresses the commit object.
+3. Displays:
+   - Commit SHA
+   - Author
+   - Date
+   - Commit message
+4. Reads the parent commit (if exists).
+5. Repeats until no parent is found.
+
+This recreates Git’s commit history traversal using parent-linked commits.
+
+## How rm Works
+./mygit rm <filename>
+
+Removes a file from both:
+
+- Working directory  
+- Staging area (index)
+
+Steps:
+
+1. Deletes the file from the current directory.
+2. Removes the file’s entry from `.git/index`.
+3. Updates the index file.
+
 ## Compilation
 
 Requires:
@@ -161,12 +196,12 @@ gcc src/*.c -Iinclude -lssl -lcrypto -lz -o ccgit
 
 ## Example Usage
 
-./ccgit init
+./mygit init
 echo "hello" > file.txt
-./ccgit add file.txt
-./ccgit commit "first commit"
-./ccgit status
-./ccgit revert
+./mygit add file.txt
+./mygit commit "first commit"
+./mygit status
+./mygit revert
 
 ---
 
@@ -183,5 +218,5 @@ echo "hello" > file.txt
 
 ## Conclusion
 
-ccgit is a simplified educational implementation of Git’s core storage engine.  
+mygit is a simplified educational implementation of Git’s core storage engine.  
 It demonstrates how Git stores objects, creates commits, and manages repository history at a low level.
