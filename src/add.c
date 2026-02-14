@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void add_file(const char *filename){
     FILE *file = fopen(filename, "rb");

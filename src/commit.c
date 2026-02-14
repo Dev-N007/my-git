@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void commit_changes(const char *message){
     FILE *index = fopen(INDEX_FILE, "r");

@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 #include <dirent.h>
 
 void status(){
@@ -50,7 +50,7 @@ void status(){
         if (entry->d_type != DT_REG)
             continue;
 
-        if (strcmp(entry->d_name, "ccgit") == 0)
+        if (strcmp(entry->d_name, "mygit") == 0)
             continue;
 
         FILE *check = fopen(INDEX_FILE, "r");

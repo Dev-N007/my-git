@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void hash_object(const char *type, const unsigned char *data, size_t len, char *sha1_hex){
     char header[64];

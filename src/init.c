@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void init_repo(){
     if (access(GIT_DIR, F_OK) == 0){

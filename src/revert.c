@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void revert(){
     FILE *ref = fopen(".git/refs/heads/master", "r");

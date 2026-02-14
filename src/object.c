@@ -1,4 +1,4 @@
-#include "../include/ccgit.h"
+#include "../include/mygit.h"
 
 void write_object(const char *sha1_hex, const unsigned char *data, size_t len){
     char dir[256], path[256];
