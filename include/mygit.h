@@ -21,6 +21,7 @@ void commit_changes(const char *message);
 void status();
 void revert();
 void log_history();
+void remove_file(const char *filename);
 
 void hash_object(const char *type, const unsigned char *data, size_t len, char *sha1_hex);
 void write_object(const char *sha1_hex, const unsigned char *data, size_t len);

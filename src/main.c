@@ -19,6 +19,8 @@ int main(int argc, char *argv[]){
         revert();
     else if (strcmp(argv[1], "log") == 0)
         log_history();
+    else if (strcmp(argv[1], "rm") == 0 && argc == 3)
+        remove_file(argv[2]);
     else 
         printf("Unknown command\n");
     
